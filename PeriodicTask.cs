@@ -1,37 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 
-namespace PikabluCS {
+namespace PikardIrcBot
+{
     /// <summary>
     /// Base class for tasks that run periodically.
     /// </summary>
-    internal abstract class PeriodicTask : IDisposable {
+    internal abstract class PeriodicTask : IDisposable
+    {
         private bool disposed;
         private Timer timer;
         private TimeSpan interval;
 
-        public PeriodicTask() {
+        public PeriodicTask()
+        {
             timer = new Timer((state) => this.Run());
         }
 
-        protected PeriodicTask(TimeSpan interval) {
+        protected PeriodicTask(TimeSpan interval)
+        {
             this.interval = interval;
         }
 
-        ~PeriodicTask() {
+        ~PeriodicTask()
+        {
             this.Dispose(false);
         }
 
-        public void Dispose() {
+        public void Dispose()
+        {
             this.Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing) {
-            if (disposed) {
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+            {
                 return;
             }
 
@@ -40,17 +45,20 @@ namespace PikabluCS {
             disposed = true;
         }
 
-        public void Start() {
+        public void Start()
+        {
             timer.Change(interval, interval);
         }
 
-        public void Stop() {
+        public void Stop()
+        {
             timer.Change(Duration.Infinite, Duration.Infinite);
         }
 
         protected abstract void Run();
 
-        public TimeSpan Interval {
+        public TimeSpan Interval
+        {
             get { return interval; }
             set { interval = value; }
         }
