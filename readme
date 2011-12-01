@@ -1,0 +1,45 @@
+Pikard a simple IRC Bot
+-----------------------
+
+-Description
+-Version History
+-Instructions
+
+*****************
+* Description
+*****************
+Pikard is an IRC bot that can handle temporal bans on IRC and then unban automatically
+That's all it does, really. So far, that is.
+
+
+*****************
+* Version History
+*****************
+-0.2 1/12/2001:
+ * Second release!
+ * Complete rewrite, now uses the library smartirc4net
+
+-0.1 - 26/11/2011:
+ * First release!
+ * Capabilities: banning, kicking, unbanning
+ * Working as it should. If you exploit it hard it could break
+
+
+*****************
+* Instructions
+*****************
+I used to launch it with a batch file so I could give start arguments, but I deleted that functionality. Maybe it can be readded in the future.
+
+Just edit Program.cs and modify "Channel" to your likings.
+
+Please note that this bot was heavily tailored to work with FreeNode. So it might not work for every IRC Server.
+
+Commands:
+!ban <nickname> <duration> [reason]
+!kick <nickname> [reason]
+!unban <nickname>
+!kickban <nickname>
+
+It also handles private messages:
+die
+banned
