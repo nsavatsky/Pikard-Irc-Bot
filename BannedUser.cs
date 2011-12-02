@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace PikabluCS
+namespace PikardIrcBot
 {
     public class BannedUser
     {
