@@ -34,6 +34,9 @@ Just edit Program.cs and modify "Channel" to your likings.
 
 Please note that this bot was heavily tailored to work with FreeNode. So it might not work for every IRC Server.
 
+Attention: If building the project yields a "Missing references" error, delete smartirc4net from the references listing and 
+readd it using the smartirc4net dll included here
+
 Commands:
 !ban <nickname> <duration> [reason]
 !kick <nickname> [reason]
