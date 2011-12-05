@@ -22,7 +22,7 @@ namespace PikardIrcBot
         ~PeriodicTask()
         {
             this.Dispose(false);
-        }
+        } 
 
         public void Dispose()
         {

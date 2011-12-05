@@ -38,7 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="smartirc4net">
-      <HintPath>..\Desktop\src\bin\Release\smartirc4net.dll</HintPath>
+      <HintPath>.\smartirc4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
