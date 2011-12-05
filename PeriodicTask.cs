@@ -37,7 +37,7 @@ namespace PikardIrcBot
                 return;
             }
 
-            timer.Dispose();
+            timer.Dispose(); 
 
             disposed = true;
         }
