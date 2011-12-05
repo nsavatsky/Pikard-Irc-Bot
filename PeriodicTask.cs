@@ -8,18 +8,15 @@ namespace PikardIrcBot
     /// </summary>
     internal abstract class PeriodicTask : IDisposable
     {
+        private readonly Timer timer;
         private bool disposed;
-        private Timer timer;
         private TimeSpan interval;
+        private bool running;
 
-        public PeriodicTask()
+        protected PeriodicTask()
         {
             timer = new Timer((state) => this.Run());
-        }
-
-        protected PeriodicTask(TimeSpan interval)
-        {
-            this.interval = interval;
+            interval = Duration.Infinite;
         }
 
         ~PeriodicTask()
@@ -48,11 +45,13 @@ namespace PikardIrcBot
         public void Start()
         {
             timer.Change(interval, interval);
+            running = true;
         }
 
         public void Stop()
         {
             timer.Change(Duration.Infinite, Duration.Infinite);
+            running = false;
         }
 
         protected abstract void Run();
@@ -60,7 +59,18 @@ namespace PikardIrcBot
         public TimeSpan Interval
         {
             get { return interval; }
-            set { interval = value; }
+            set
+            {
+                interval = value;
+                if (running)
+                {
+                    this.Start();
+                }
+            }
+        }
+
+        public bool Running {
+            get { return running; }
         }
     }
 }
